@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>SimpleDraw</title>
+  <link rel="stylesheet" href="styles/styles.css">
+  <link rel="stylesheet" href="styles/quicksettings.css">
+  <script type="text/javascript" src="libs/quicksettings.min.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <div class="toolbar">
+      <div class="label">Width:</div>
+      <div>
+        <input type="number" min="1" max="100" value="2" id="widthInput"></input>
+      </div>
+      <div class="label">Color</div>
+      <div>
+        <input type="color" value="#000000" id="colorInput"></input>
+      </div>
+      <div class="label">Background</div>
+      <div>
+        <input type="color" value="#ffffff" id="backgroundInput"></input>
+      </div>
+      <div id="saveBtn" class="toolbarBtn">
+        <img src="/assets/Save-48.png"/>
+      </div>
+        <div id="clearBtn" class="toolbarBtn">
+        <img src="/assets/Delete-48.png"/>
+      </div>
+      <div id="modeBtn" class="toolbarBtn">
+        <img src="/assets/Pencil Tip-48.png"/>
+      </div>
+      <div id="toggleGridBtn" class="toolbarBtn">
+        <img src="/assets/Grid-48.png"/>
+      </div>
+      <div id="toggleSnapBtn" class="toolbarBtn">
+        <img src="/assets/NoSnap-48.png"/>
+      </div>
+      <div class="label">Grid:</div>
+      <div>
+        <input type="number" min="5" max="100" value="40" id="gridInput"></input>
+      </div>
+      <div id="helpBtn" class="toolbarBtn">
+        <img src="/assets/Help-48.png"/>
+      </div>
+    </div>
+    <canvas id="grid"></canvas>
+    <canvas id="canvas"></canvas>
+    <canvas id="drawingCanvas"></canvas>
+  </div>  
+  </div>
+  
+  <script src="src/Model.js"></script>
+  <script src="src/View.js"></script>
+  <script src="src/Controller.js"></script>
+  <script src="src/DrawingView.js"></script>
+  <script src="src/Grid.js"></script>
+  <script src="src/Toolbar.js"></script>
+  <script src="src/KeyboardHandler.js"></script>
+  <script src="src/Alert.js"></script>
+  <script src="src/main.js"></script>
+</body>
+</html>

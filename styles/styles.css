@@ -1,0 +1,113 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+}
+
+#app {
+  width: 100%; !important;
+  height: 100% !important;
+}
+
+canvas {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 80px;
+}
+
+.toolbar {
+  text-align: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 79px;
+  background-color: #eee;
+  border-right: 1px solid #999;
+}
+
+.toolbar div {
+}
+
+.toolbar .label {
+  margin-top: 10px;
+  margin-bottom: 3px;
+}
+
+.toolbarBtn {
+  cursor: pointer;
+  padding: 2px;
+}
+
+#helpBtn {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 75px;
+}
+
+.toolbarBtn:hover {
+  background-color: #ccc;
+}
+
+.toolbar input[type=number] {
+  width: 50px;
+}
+
+.toolbar input[type=color] {
+}
+
+#help {
+  display: none;
+  padding: 10px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  
+  width: 300px;
+  height: 200px;
+  background-color: #ccc;
+  -webkit-box-shadow: 10px 10px 20px 0px rgba(0,0,0,0.5);
+}
+
+#help h3 {
+  margin: 0;
+}
+
+
+.alert_overlay {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.alert {
+  padding: 10px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  
+  width: 300px;
+  background-color: #ccc;
+  -webkit-box-shadow: 10px 10px 20px 0px rgba(0,0,0,0.5);
+}
+
+.alert h1 {
+  margin: 0;
+}
+
+.alert input {
+  width: 100px;
+  height: 30px;
+  float: right;
+}
+
+
