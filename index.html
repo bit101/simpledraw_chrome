@@ -4,7 +4,6 @@
   <title>SimpleDraw</title>
   <link rel="stylesheet" href="styles/styles.css">
   <link rel="stylesheet" href="styles/quicksettings.css">
-  <script type="text/javascript" src="libs/quicksettings.min.js"></script>
 </head>
 
 <body>
@@ -12,15 +11,15 @@
     <div class="toolbar">
       <div class="label">Width:</div>
       <div>
-        <input type="number" min="1" max="100" value="2" id="widthInput"></input>
+        <input type="number" min="1" max="100" value="2" id="widthInput"/>
       </div>
       <div class="label">Color</div>
       <div>
-        <input type="color" value="#000000" id="colorInput"></input>
+        <input type="color" value="#000000" id="colorInput"/>
       </div>
       <div class="label">Background</div>
       <div>
-        <input type="color" value="#ffffff" id="backgroundInput"></input>
+        <input type="color" value="#ffffff" id="backgroundInput"/>
       </div>
       <div id="saveBtn" class="toolbarBtn">
         <img src="/assets/Save-48.png"/>
@@ -39,7 +38,7 @@
       </div>
       <div class="label">Grid:</div>
       <div>
-        <input type="number" min="5" max="100" value="40" id="gridInput"></input>
+        <input type="number" min="5" max="100" value="40" id="gridInput"/>
       </div>
       <div id="helpBtn" class="toolbarBtn">
         <img src="/assets/Help-48.png"/>
@@ -48,7 +47,6 @@
     <canvas id="grid"></canvas>
     <canvas id="canvas"></canvas>
     <canvas id="drawingCanvas"></canvas>
-  </div>  
   </div>
   
   <script src="src/Model.js"></script>
