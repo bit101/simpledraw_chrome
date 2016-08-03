@@ -42,6 +42,9 @@ var DrawingView = {
       var point = points[j];
       this.context.lineTo(point.x, point.y);
     }
+    if(!this.model.shiftMode && this.model.smooth) {
+      this.context.lineTo(this.mouse.x, this.mouse.y);
+    }
     this.context.stroke();
   },
   
@@ -51,6 +54,7 @@ var DrawingView = {
 
   
   onMouseDown: function(event) {
+    this.lastPoint = null;
     this.model.shiftKey = event.shiftKey;
     this.model.newLine(this.getPoint(event));
 
@@ -68,6 +72,9 @@ var DrawingView = {
   },
   
   onMouseUp: function() {
+    if(this.model.smooth) {
+      this.model.addPoint(this.mouse);
+    }
     this.canvas.removeEventListener("mousemove", this.onMouseMove);
     this.canvas.removeEventListener("touchmove", this.onMouseMove);
     this.canvas.removeEventListener("mouseup", this.onMouseUp);
@@ -90,7 +97,14 @@ var DrawingView = {
     }
     if(this.model.snap) {
       this.snap(point);
+      this.mouse = {x: point.x, y: point.y};
     }
+    else if(this.lastPoint && this.model.smooth) {
+      this.mouse = {x: point.x, y: point.y};
+      point.x = this.lastPoint.x + (point.x - this.lastPoint.x) * 0.2;
+      point.y = this.lastPoint.y + (point.y - this.lastPoint.y) * 0.2;
+    }
+    this.lastPoint = point;
     return point;    
   },
   

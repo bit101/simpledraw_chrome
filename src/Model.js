@@ -21,6 +21,7 @@ var Model = {
     this.mode = "free";
     this.toolbarVisible = true;
     this.isFullscreen = false;
+    this.smooth = true;
   },
   
   clear: function() {
@@ -84,18 +85,23 @@ var Model = {
     }
     if(this.mode === "lines") {
       this.currentLine.points.push(point);
-      this.linify();      
+      this.linify();
+      return;
     }
     if(dist > this.minSegment) {
       this.currentLine.points.push(point);
       this.lastPoint = point;
     }
   },
-  
+
   toggleGrid: function() {
     this.gridVisible = !this.gridVisible;
   },
-  
+
+  toggleSmooth: function() {
+    this.smooth = !this.smooth;
+  },
+
   toggleSnap: function() {
     this.snap = !this.snap;
   },

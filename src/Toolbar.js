@@ -29,10 +29,8 @@ var Toolbar = {
     document.getElementById("clearBtn").addEventListener("click", this.controller.clear);
     
     document.getElementById("saveBtn").addEventListener("click", this.controller.save);
-    
-    // document.getElementById("undoBtn").addEventListener("click", this.controller.undo);
-    
-    // document.getElementById("redoBtn").addEventListener("click", this.controller.redo);
+
+    document.getElementById("toggleSmoothBtn").addEventListener("click", this.controller.toggleSmooth);
 
     document.getElementById("toggleGridBtn").addEventListener("click", this.controller.toggleGrid);
 

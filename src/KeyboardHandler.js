@@ -38,11 +38,15 @@ var KeyboardHandler = {
         case 76:    // l
           this.controller.setMode("lines");
           break;
-          
+
+        case 79:    // p
+          this.controller.toggleSmooth();
+          break;
+
         case 80:    // p
           this.controller.setMode("free");
           break;
-          
+
         case 69:    // e
           this.controller.setMode("eraser");
           break;

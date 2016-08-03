@@ -14,6 +14,7 @@ var Controller = {
     this.undo = this.undo.bind(this);
     this.redo = this.redo.bind(this);
     this.toggleGrid = this.toggleGrid.bind(this);
+    this.toggleSmooth = this.toggleSmooth.bind(this);
     this.toggleSnap = this.toggleSnap.bind(this);
     this.cycleModes = this.cycleModes.bind(this);
     this.toggleToolbar = this.toggleToolbar.bind(this);
@@ -80,12 +81,22 @@ var Controller = {
     this.model.redo();
     this.view.render();
   },
-  
+
   toggleGrid: function() {
     this.model.toggleGrid();
     this.view.updateGrid();
   },
-  
+
+  toggleSmooth: function() {
+    this.model.toggleSmooth();
+    if(this.model.smooth) {
+      document.getElementById("toggleSmoothBtn").getElementsByTagName("img")[0].src = "/assets/Smooth-48.png";
+    }
+    else {
+      document.getElementById("toggleSmoothBtn").getElementsByTagName("img")[0].src = "/assets/NoSmooth-48.png";
+    }
+  },
+
   toggleSnap: function() {
     this.model.toggleSnap();
     if(this.model.snap) {
@@ -150,7 +161,7 @@ var Controller = {
       return;
     }
     this.fileName = fileEntry.name;
-    var self = this;
+     var self = this;
     this.view.getBitmap(function(blob) {
       self.blob = blob;
       fileEntry.createWriter(self.onWriterCreated, self.onWriterFailed);
@@ -183,6 +194,7 @@ var Controller = {
     html +=   "  <li>T - toggle tool bar</li>";
     html +=   "  <li>G - toggle grid visibility</li>";
     html +=   "  <li>S - toggle snap to grid</li>";
+    html +=   "  <li>O - toggle smoothing</li>";
     html +=   "  <li>P - pencil mode</li>";
     html +=   "  <li>L - line mode</li>";
     html +=   "  <li>E - eraser mode</li>";
