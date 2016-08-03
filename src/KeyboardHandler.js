@@ -48,7 +48,12 @@ var KeyboardHandler = {
           break;
         
         case 90:    // z
-         if(event.ctrlKey) {
+          if(navigator.appVersion.indexOf("Mac") != -1) {
+            if(event.metaKey) {
+              this.controller.undo();
+            }
+          }
+          else if(event.ctrlKey) {
             this.controller.undo();
           }
           break;
@@ -61,7 +66,12 @@ var KeyboardHandler = {
           break;
           
         case 83:    // s
-          if(event.ctrlKey) {
+          if(navigator.appVersion.indexOf("Mac") != -1) {
+            if(event.metaKey) {
+              this.controller.save();
+            }
+          }
+          else if(event.ctrlKey) {
             this.controller.save();
           }
           else {
@@ -74,7 +84,12 @@ var KeyboardHandler = {
           break;
     
         case 89:    // y
-          if(event.ctrlKey) {
+          if(navigator.appVersion.indexOf("Mac") != -1) {
+            if(event.metaKey) {
+              this.controller.redo();
+            }
+          }
+          else if(event.ctrlKey) {
             this.controller.redo();
           }
           break;

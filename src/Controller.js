@@ -22,7 +22,7 @@ var Controller = {
     this.onHelp = this.onHelp.bind(this);
     this.updateVisibility = this.updateVisibility.bind(this);
     this.onWriterCreated = this.onWriterCreated.bind(this);
-    this.onWriterFaileed = this.onWriterFailed.bind(this);
+    this.onWriterFailed = this.onWriterFailed.bind(this);
   },
   
   setWidth: function(value) {
@@ -149,23 +149,26 @@ var Controller = {
     if(chrome.runtime.lastError || !fileEntry) {
       return;
     }
+    this.fileName = fileEntry.name;
     var self = this;
     this.view.getBitmap(function(blob) {
-      fileEntry.createWriter(this.onWriterCreated, this.onWriterFailed);
+      self.blob = blob;
+      fileEntry.createWriter(self.onWriterCreated, self.onWriterFailed);
       
     });
   },
   
   onWriterCreated: function(fileWriter) {
+    var self = this;
     fileWriter.onwriteend = function(e) {
-      Alert.create("File saved", "Your image was saved to " + fileEntry.fullPath);
+      Alert.create("File saved", "Your image was saved as \"" + self.fileName + "\"");
     };
 
     fileWriter.onerror = function(e) {
       Alert.create("Error", "Failed to save file. " + e.toString());
     };
     
-    fileWriter.write(blob);
+    fileWriter.write(this.blob);
   },
   
   onWriterFailed: function(error) {
@@ -186,13 +189,11 @@ var Controller = {
     html +=   "  <li>M - cycle drawing modes</li>";
     html +=   "  <li>X - clear drawing</li>";
     html +=   "  <li>R - reset all tools to default values</li>";
-    html +=   "  <li>Shift-R - reset all tools to default values, clears drawing and background color</li>";
+    html +=   "  <li>shift-R - reset all tools to default values, clears drawing and background color</li>";
     html +=   "  <li>0-9 - preset drawing colors</li>";
     html +=   "  <li>+/-  increase/decrease line width by 1</li>";
-    html +=   "  <li>Shift +/-  increase/decrease line width by 10</li>";
-    html +=   "  <li>[ or ]  increase/decrease grid size by 1</li>";
-    html +=   "  <li>Shift [ or ]  increase/decrease grid size by 10</li>";
-    html +=   "  <li>Shift - constrain horiz/vert drawing</li>";
+    html +=   "  <li>shift +/-  increase/decrease line width by 10</li>";
+    html +=   "  <li>shift - constrain horiz/vert drawing</li>";
     html +=   "  <li>Ctrl/Cmd-S   - save</li>";
     html +=   "  <li>Ctrl/Cmd-Z - undo</li>";
     html +=   "  <li>Ctrl/Cmd-Y - redo</li>";
