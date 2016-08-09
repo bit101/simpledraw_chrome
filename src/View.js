@@ -62,6 +62,12 @@ var View = {
       this.context.globalCompositeOperation = line.eraser ? "destination-out" : "source-over";
       this.context.strokeStyle = line.color;
       this.context.lineWidth = line.width;
+      if(line.dash) {
+        this.context.setLineDash([line.width * 5, line.width * 5]);
+      }
+      else {
+        this.context.setLineDash([]);
+      }
       for(var j = 0; j < line.points.length; j++) {
         this.context.lineTo(line.points[j].x, line.points[j].y);
       }

@@ -22,6 +22,7 @@ var Model = {
     this.toolbarVisible = true;
     this.isFullscreen = false;
     this.smooth = true;
+    this.dash = false;
   },
   
   clear: function() {
@@ -50,14 +51,16 @@ var Model = {
         points: [point],
         width: 40,
         color: this.background,
-        eraser: true
+        eraser: true,
+        dash: false
       };
     }
     else {
       this.currentLine = {
         points: [point],
         width: this.width,
-        color: this.color
+        color: this.color,
+        dash: this.dash
       };
     }
     this.lines.push(this.currentLine);

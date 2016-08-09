@@ -19,6 +19,7 @@ canvas {
 }
 
 .toolbar {
+  font-size: 12px;
   text-align: center;
   position: absolute;
   top: 0;
@@ -42,13 +43,6 @@ canvas {
   padding: 2px;
 }
 
-#helpBtn {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 75px;
-}
-
 .toolbarBtn:hover {
   background-color: #ccc;
 }
@@ -68,14 +62,18 @@ canvas {
   top: 50%;
   transform: translate(-50%, -50%);
   
-  width: 300px;
+  width: 100%;
   height: 200px;
   background-color: #ccc;
-  -webkit-box-shadow: 10px 10px 20px 0px rgba(0,0,0,0.5);
+  -webkit-box-shadow: 10px 10px 20px 0 rgba(0,0,0,0.5);
 }
 
-#help h3 {
+h3 {
   margin: 0;
+}
+
+ul {
+  -webkit-margin-before: 0;
 }
 
 
@@ -95,9 +93,9 @@ canvas {
   top: 50%;
   transform: translate(-50%, -50%);
   
-  width: 300px;
-  background-color: #ccc;
-  -webkit-box-shadow: 10px 10px 20px 0px rgba(0,0,0,0.5);
+  width: 600px;
+  background-color: #eee;
+  -webkit-box-shadow: 10px 10px 20px 0 rgba(0,0,0,0.5);
 }
 
 .alert h1 {

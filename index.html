@@ -10,39 +10,42 @@
     <div class="toolbar">
       <div class="label">Width:</div>
       <div>
-        <input type="number" min="1" max="100" value="2" id="widthInput"></input>
+        <input type="number" min="1" max="100" value="2" id="widthInput" title="Line Width"></input>
       </div>
-      <div class="label">Stroke Color</div>
+      <div class="label">Color</div>
       <div>
-        <input type="color" value="#000000" id="colorInput"></input>
+        <input type="color" value="#000000" id="colorInput" title="Line Color"></input>
       </div>
       <div class="label">Background</div>
       <div>
-        <input type="color" value="#ffffff" id="backgroundInput"></input>
+        <input type="color" value="#ffffff" id="backgroundInput" title="Background Color"></input>
       </div>
-      <div id="saveBtn" class="toolbarBtn">
+      <div id="saveBtn" class="toolbarBtn" title="Save Drawing">
         <img src="/assets/Save-48.png"/>
       </div>
-        <div id="clearBtn" class="toolbarBtn">
+        <div id="clearBtn" class="toolbarBtn" title="Clear Drawing">
         <img src="/assets/Delete-48.png"/>
       </div>
-      <div id="modeBtn" class="toolbarBtn">
+      <div id="modeBtn" class="toolbarBtn" title="Change Drawing Mode">
         <img src="/assets/Pencil Tip-48.png"/>
       </div>
-      <div id="toggleSmoothBtn" class="toolbarBtn">
+      <div id="toggleSmoothBtn" class="toolbarBtn" title="Toggle Line Smoothing">
         <img src="/assets/Smooth-48.png"/>
       </div>
-      <div id="toggleGridBtn" class="toolbarBtn">
+      <div id="toggleGridBtn" class="toolbarBtn" title="Toggle Grid Visibility">
         <img src="/assets/Grid-48.png"/>
       </div>
-      <div id="toggleSnapBtn" class="toolbarBtn">
+      <div id="toggleSnapBtn" class="toolbarBtn" title="Toggle Snap to Grid">
         <img src="/assets/NoSnap-48.png"/>
+      </div>
+      <div id="toggleDashBtn" class="toolbarBtn" title="Toggle Line Dash">
+        <img src="/assets/NoDash-48.png"/>
       </div>
       <div class="label">Grid:</div>
       <div>
-        <input type="number" min="5" max="100" value="40" id="gridInput"></input>
+        <input type="number" min="5" max="100" value="40" id="gridInput" title="Grid Size"></input>
       </div>
-      <div id="helpBtn" class="toolbarBtn">
+      <div id="helpBtn" class="toolbarBtn" title="Info">
         <img src="/assets/Help-48.png"/>
       </div>
     </div>

@@ -36,6 +36,8 @@ var Toolbar = {
 
     document.getElementById("toggleSnapBtn").addEventListener("click", this.controller.toggleSnap);
 
+    document.getElementById("toggleDashBtn").addEventListener("click", this.controller.toggleDash);
+
     document.getElementById("modeBtn").addEventListener("click", this.controller.cycleModes);
 
     document.getElementById("helpBtn").addEventListener("click", this.controller.onHelp);

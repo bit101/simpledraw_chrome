@@ -34,6 +34,12 @@ var DrawingView = {
         points = line.points;
     this.context.lineCap = "round";
     this.context.lineJoin = "round";
+    if(line.dash) {
+      this.context.setLineDash([line.width * 5, line.width * 5]);
+    }
+    else {
+      this.context.setLineDash([]);
+    }
     this.clear();
     this.context.beginPath();
     this.context.strokeStyle = line.color;
@@ -101,8 +107,11 @@ var DrawingView = {
     }
     else if(this.lastPoint && this.model.smooth) {
       this.mouse = {x: point.x, y: point.y};
-      point.x = this.lastPoint.x + (point.x - this.lastPoint.x) * 0.2;
-      point.y = this.lastPoint.y + (point.y - this.lastPoint.y) * 0.2;
+      point.x = this.lastPoint.x + (point.x - this.lastPoint.x) * 0.25;
+      point.y = this.lastPoint.y + (point.y - this.lastPoint.y) * 0.25;
+    }
+    else {
+      this.mouse = {x: point.x, y: point.y};
     }
     this.lastPoint = point;
     return point;    

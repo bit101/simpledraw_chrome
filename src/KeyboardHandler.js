@@ -47,6 +47,10 @@ var KeyboardHandler = {
           this.controller.setMode("free");
           break;
 
+        case 68:    // d
+          this.controller.toggleDash();
+          break;
+
         case 69:    // e
           this.controller.setMode("eraser");
           break;
@@ -63,10 +67,7 @@ var KeyboardHandler = {
           break;
           
         case 82:    // r
-          this.controller.reset();
-          if(event.shiftKey) {
-            this.controller.clear();
-          }
+          this.controller.reset(event.shiftKey);
           break;
           
         case 83:    // s

@@ -16,6 +16,7 @@ var Controller = {
     this.toggleGrid = this.toggleGrid.bind(this);
     this.toggleSmooth = this.toggleSmooth.bind(this);
     this.toggleSnap = this.toggleSnap.bind(this);
+    this.toggleDash = this.toggleDash.bind(this);
     this.cycleModes = this.cycleModes.bind(this);
     this.toggleToolbar = this.toggleToolbar.bind(this);
     this.save = this.save.bind(this);
@@ -145,7 +146,17 @@ var Controller = {
     }
     this.view.updateCanvasPositions();
   },
-  
+
+  toggleDash: function () {
+    this.model.dash = !this.model.dash;
+    if(this.model.dash) {
+      document.getElementById("toggleDashBtn").getElementsByTagName("img")[0].src = "/assets/Dash-48.png";
+    }
+    else {
+      document.getElementById("toggleDashBtn").getElementsByTagName("img")[0].src = "/assets/NoDash-48.png";
+    }
+  },
+
   save: function() {
     chrome.fileSystem.chooseEntry({
       type: "saveFile",
@@ -158,6 +169,7 @@ var Controller = {
   
   onChooseFile: function(fileEntry) {
     if(chrome.runtime.lastError || !fileEntry) {
+      Alert.create("Error", "Failed to save file. Try another location.");
       return;
     }
     this.fileName = fileEntry.name;
@@ -195,18 +207,19 @@ var Controller = {
     html +=   "  <li>G - toggle grid visibility</li>";
     html +=   "  <li>S - toggle snap to grid</li>";
     html +=   "  <li>O - toggle smoothing</li>";
+    html +=   "  <li>D - toggle line dash</li>";
     html +=   "  <li>P - pencil mode</li>";
     html +=   "  <li>L - line mode</li>";
     html +=   "  <li>E - eraser mode</li>";
     html +=   "  <li>M - cycle drawing modes</li>";
     html +=   "  <li>X - clear drawing</li>";
-    html +=   "  <li>R - reset all tools to default values</li>";
-    html +=   "  <li>shift-R - reset all tools to default values, clears drawing and background color</li>";
+    html +=   "  <li>R - reset all tools to default values, except background color</li>";
+    html +=   "  <li>Shift-R - clear drawing, reset all tools to default values, including background color</li>";
     html +=   "  <li>0-9 - preset drawing colors</li>";
     html +=   "  <li>+/-  increase/decrease line width by 1</li>";
-    html +=   "  <li>shift +/-  increase/decrease line width by 10</li>";
-    html +=   "  <li>shift - constrain horiz/vert drawing</li>";
-    html +=   "  <li>Ctrl/Cmd-S   - save</li>";
+    html +=   "  <li>Shift +/-  increase/decrease line width by 10</li>";
+    html +=   "  <li>Shift - constrain horiz/vert drawing</li>";
+    html +=   "  <li>Ctrl/Cmd-S - save</li>";
     html +=   "  <li>Ctrl/Cmd-Z - undo</li>";
     html +=   "  <li>Ctrl/Cmd-Y - redo</li>";
     html +=   "</ul>";
@@ -228,12 +241,19 @@ var Controller = {
     }
   },
   
-  reset: function() {
+  reset: function(clearBG) {
     this.model.width = 2;
     document.getElementById("widthInput").value = this.model.width;
-    
+
     this.model.color = "#000000";
     document.getElementById("colorInput").value = this.model.color;
+
+    if(clearBG) {
+      this.model.background = "#ffffff";
+      document.getElementById("backgroundInput").value = this.model.background;
+      this.view.updateBackground();
+      this.clear();
+    }
 
     this.model.gridVisible = false;
     this.view.updateGrid();
@@ -246,6 +266,9 @@ var Controller = {
 
     this.model.mode = "free";
     document.getElementById("modeBtn").getElementsByTagName("img")[0].src = "/assets/Pencil Tip-48.png";
+
+    this.model.smooth = true;
+    document.getElementById("toggleSmoothBtn").getElementsByTagName("img")[0].src = "/assets/Smooth-48.png";
 
   }
 

@@ -12,7 +12,7 @@ var Alert = {
     
     var div = document.createElement("div");
     div.className = "alert";
-    div.innerHTML = "<h1>" + title + "</h1><p>" + text + "</p><input id='close_btn' type='button' value='OK'></input>";
+    div.innerHTML = "<h1>" + title + "</h1><div>" + text + "</div><input id='close_btn' type='button' value='OK'></input>";
     
     overlay.appendChild(div);
     document.body.appendChild(overlay);
